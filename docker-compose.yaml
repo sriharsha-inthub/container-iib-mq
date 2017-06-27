@@ -2,6 +2,9 @@ version: '2'
 services:
     iibserver:
         build: ./iib-10.0.0.8
+        environment:
+            - LICENSE=${LICENSE}
+            - NODENAME=${NODENAME}
         ports:
             - "4414"
             - "7800"
@@ -10,4 +13,9 @@ services:
         depends_on:
             - wmqserver
     wmqserver:
-        build: ./mq-9.0.3     
+        build: ./mq-9.0.3
+        environment:
+            - LICENSE=${LICENSE}
+            - MQ_QMGR_NAME=${MQ_QMGR_NAME}
+            - MQ_VOLUME=${MQ_VOLUME}
+            
