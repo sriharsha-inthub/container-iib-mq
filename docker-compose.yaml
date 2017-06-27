@@ -1,0 +1,16 @@
+version: '2'
+services:
+    iibserver:
+        build: ./iib-10.0.0.8/
+        ports:
+            - "4414"
+            - "7800"
+        # volumes:
+        #    - .:/code
+        depends_on:
+            - wmqserver
+    wmqserver:
+        build: ./mq-9.0.3/
+         ports:
+            - "1414"
+            - "9443"
